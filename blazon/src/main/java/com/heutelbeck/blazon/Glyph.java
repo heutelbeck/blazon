@@ -24,6 +24,7 @@ public record Glyph(List<String> rows) {
     /**
      * Validates and defensively copies the rows.
      *
+     * @param rows the character rows, top to bottom
      * @throws IllegalArgumentException if there are no rows or the rows differ in
      * width
      */

@@ -21,6 +21,12 @@ import org.springframework.aot.hint.RuntimeHintsRegistrar;
  */
 public class BlazonRuntimeHints implements RuntimeHintsRegistrar {
 
+    /**
+     * Creates the registrar. Instantiated by Spring's ahead-of-time processing.
+     */
+    public BlazonRuntimeHints() {
+    }
+
     @Override
     public void registerHints(RuntimeHints hints, ClassLoader classLoader) {
         new BindingReflectionHintsRegistrar().registerReflectionHints(hints.reflection(), BlazonProperties.class);

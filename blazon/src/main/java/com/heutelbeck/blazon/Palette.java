@@ -26,6 +26,8 @@ public record Palette(Gradient gradient, Color accent) {
     /**
      * Validates the components.
      *
+     * @param gradient the gradient for the glyph art
+     * @param accent the colour for the metadata lines
      * @throws NullPointerException if the gradient or accent is {@code null}
      */
     public Palette {

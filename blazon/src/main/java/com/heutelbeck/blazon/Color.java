@@ -22,6 +22,9 @@ public record Color(int red, int green, int blue) {
     /**
      * Validates that every component is within the representable range.
      *
+     * @param red the red component, {@code 0..255}
+     * @param green the green component, {@code 0..255}
+     * @param blue the blue component, {@code 0..255}
      * @throws IllegalArgumentException if any component is outside {@code 0..255}
      */
     public Color {
