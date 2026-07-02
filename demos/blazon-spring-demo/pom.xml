@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2026 Dominic Heutelbeck (dominic@heutelbeck.com)
+
+    SPDX-License-Identifier: MIT
+
+    Licensed under the MIT License. See the LICENSE file in the project root
+    for the full license text.
+
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>4.1.0</version>
+		<relativePath/>
+	</parent>
+
+	<groupId>com.heutelbeck</groupId>
+	<artifactId>blazon-spring-demo</artifactId>
+	<version>0.1.0-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<name>Blazon Spring Demo</name>
+	<description>Spring Boot application demonstrating the Blazon startup banner.</description>
+
+	<properties>
+		<java.version>17</java.version>
+		<maven.deploy.skip>true</maven.deploy.skip>
+
+		<sapl-code-style.version>4.1.2</sapl-code-style.version>
+		<formatter-maven-plugin.version>2.29.0</formatter-maven-plugin.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.heutelbeck</groupId>
+			<artifactId>blazon-spring</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>net.revelc.code.formatter</groupId>
+				<artifactId>formatter-maven-plugin</artifactId>
+				<version>${formatter-maven-plugin.version}</version>
+				<configuration>
+					<configFile>eclipse/formatter.xml</configFile>
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>io.sapl</groupId>
+						<artifactId>sapl-code-style</artifactId>
+						<version>${sapl-code-style.version}</version>
+					</dependency>
+				</dependencies>
+				<executions>
+					<execution>
+						<goals>
+							<goal>format</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<!-- Generates classpath:git.properties (git.build.version, git.commit.id.abbrev, ...).
+			     The revision goal is already bound by spring-boot-starter-parent; this only
+			     supplies configuration. Blazon shows the values automatically once git.properties
+			     is on the environment (see spring.config.import in application.properties). -->
+			<plugin>
+				<groupId>io.github.git-commit-id</groupId>
+				<artifactId>git-commit-id-maven-plugin</artifactId>
+				<configuration>
+					<generateGitPropertiesFile>true</generateGitPropertiesFile>
+					<failOnNoGitDirectory>false</failOnNoGitDirectory>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

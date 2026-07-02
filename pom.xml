@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2026 Dominic Heutelbeck (dominic@heutelbeck.com)
+
+    SPDX-License-Identifier: MIT
+
+    Licensed under the MIT License. See the LICENSE file in the project root
+    for the full license text.
+
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.heutelbeck</groupId>
+	<artifactId>blazon-parent</artifactId>
+	<version>0.1.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<name>Blazon (build aggregator)</name>
+	<description>Build coordinator for the Blazon banner library modules.</description>
+	<url>https://github.com/heutelbeck/blazon</url>
+
+	<licenses>
+		<license>
+			<name>MIT License</name>
+			<url>https://opensource.org/licenses/MIT</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<developers>
+		<developer>
+			<name>Dominic Heutelbeck</name>
+			<email>dominic@heutelbeck.com</email>
+			<url>https://github.com/heutelbeck</url>
+		</developer>
+	</developers>
+
+	<scm>
+		<connection>scm:git:https://github.com/heutelbeck/blazon.git</connection>
+		<developerConnection>scm:git:ssh://git@github.com/heutelbeck/blazon.git</developerConnection>
+		<url>https://github.com/heutelbeck/blazon</url>
+	</scm>
+
+	<properties>
+		<!-- The aggregator itself is a build coordinator and is not published. -->
+		<maven.deploy.skip>true</maven.deploy.skip>
+	</properties>
+
+	<modules>
+		<module>blazon</module>
+		<module>blazon-spring</module>
+		<module>demos/blazon-plain-demo</module>
+		<module>demos/blazon-spring-demo</module>
+	</modules>
+
+</project>
