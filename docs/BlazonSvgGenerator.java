@@ -38,8 +38,8 @@ public final class BlazonSvgGenerator {
     private static final String BG      = "#0d1117";
     private static final String BORDER  = "#30363d";
     private static final int    PAD_X   = 24;
-    private static final int    PAD_TOP = 52;
-    private static final int    PAD_BOT = 22;
+    private static final int    PAD_TOP = 24;
+    private static final int    PAD_BOT = 24;
     private static final int    GAP     = 18;
 
     private static final String OUTPUT_DIR = "docs/img";
@@ -61,14 +61,27 @@ public final class BlazonSvgGenerator {
                 Palettes.SUNSET, Palettes.MONOCHROME };
         final String[]  names    = { "SAPL", "PARATRON", "EMBER", "OCEAN", "FOREST", "SUNSET", "MONOCHROME" };
         palettes(dir.resolve("palettes.svg"), 13, "BLAZON", palettes, names);
+
+        // Neutral "diagram" banners illustrating spacing and glyph shapes.
+        final Palette mono = new Palette(Gradient.linear(new Color(196, 203, 212), new Color(130, 140, 152)),
+                new Color(150, 160, 170));
+        banner(dir.resolve("words.svg"), 13, Blazon.of("TWO WORDS"), mono);
+        banner(dir.resolve("words-tight.svg"), 13, Blazon.of("TWO WORDS").wordSpacing(0), mono);
+        banner(dir.resolve("letter-spacing.svg"), 13, Blazon.of("WIDE").letterSpacing(3), mono);
+        banner(dir.resolve("sapl-node.svg"), 13, Blazon.of("SAPL NODE").wordSpacing(0), mono);
+        banner(dir.resolve("digits.svg"), 13, Blazon.of("0123456789"), mono);
     }
 
     private static void banner(Path file, int px, String text, Palette palette, String... meta) throws Exception {
-        Blazon blazon = Blazon.of(text).palette(palette).margin(0);
+        Blazon blazon = Blazon.of(text).margin(0);
         for (final String line : meta) {
             blazon = blazon.line(line);
         }
-        final String[] lines  = blazon.render(ColorSupport.NONE).split("\n", -1);
+        banner(file, px, blazon, palette);
+    }
+
+    private static void banner(Path file, int px, Blazon banner, Palette palette) throws Exception {
+        final String[] lines  = banner.margin(0).render(ColorSupport.NONE).split("\n", -1);
         final int      height = Fonts.halfBlock().height();
         final int      width  = artWidth(lines, height);
         final int      artW   = width * px;
@@ -164,10 +177,6 @@ public final class BlazonSvgGenerator {
     private static void chrome(StringBuilder svg, int w, int h) {
         svg.append(String.format("<rect x='0.5' y='0.5' width='%d' height='%d' rx='12' fill='%s' stroke='%s'/>", w - 1,
                 h - 1, BG, BORDER));
-        final String[] dots = { "#ff5f56", "#ffbd2e", "#27c93f" };
-        for (int i = 0; i < dots.length; i++) {
-            svg.append(String.format("<circle cx='%d' cy='24' r='6' fill='%s'/>", 26 + i * 20, dots[i]));
-        }
     }
 
     private static void rect(StringBuilder svg, int x, int y, int px, String fill) {

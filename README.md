@@ -18,9 +18,9 @@ several services: a per-character truecolor gradient painted over half-block
 glyph lettering, plus a couple of metadata lines, with a plain fallback for
 non-interactive output.
 
-> Coloured banners in this README are rendered as images (that is how the
-> truecolor output actually looks on a terminal). The plain glyph blocks in
-> monospace fences show exact spacing and glyph shapes.
+> Banners in this README are rendered as SVG images, since that is how the
+> truecolor output actually looks on a terminal. The neutral grey ones simply
+> illustrate spacing and glyph shapes.
 
 ## Contents
 
@@ -174,26 +174,17 @@ cells *on top of* that gap; `margin` indents every line.
 ```java
 Blazon.of("TWO WORDS").render();                  // default word spacing (2)
 ```
-```
-▀█▀ █   █ █▀█   █   █ █▀█ █▀█ █▀▄ █▀
- █  █▄▀▄█ █▄█   █▄▀▄█ █▄█ █▀▄ █▄▀ ▄█
-```
+![Two words with default spacing](docs/img/words.svg)
 
 ```java
 Blazon.of("TWO WORDS").wordSpacing(0).render();   // tight, like the original banners
 ```
-```
-▀█▀ █   █ █▀█ █   █ █▀█ █▀█ █▀▄ █▀
- █  █▄▀▄█ █▄█ █▄▀▄█ █▄█ █▀▄ █▄▀ ▄█
-```
+![Two words with tight spacing](docs/img/words-tight.svg)
 
 ```java
 Blazon.of("WIDE").letterSpacing(3).render();
 ```
-```
-█   █   █   █▀▄   █▀▀
-█▄▀▄█   █   █▄▀   ██▄
-```
+![Wide letter spacing](docs/img/letter-spacing.svg)
 
 The original SAPL/Paratron banners used tight word spacing and a one-cell margin;
 this reproduces `banner-plain.txt` byte-for-byte:
@@ -201,10 +192,7 @@ this reproduces `banner-plain.txt` byte-for-byte:
 ```java
 Blazon.of("SAPL NODE").margin(1).wordSpacing(0).render();
 ```
-```
- █▀ ▄▀█ █▀█ █   █▄ █ █▀█ █▀▄ █▀▀
- ▄█ █▀█ █▀▀ █▄▄ █ ▀█ █▄█ █▄▀ ██▄
-```
+![SAPL node banner](docs/img/sapl-node.svg)
 
 ### Fonts
 
@@ -213,12 +201,9 @@ covering the ASCII letters, digits and a little punctuation. Letters are rendere
 upper case; unrepresented characters render as blank space.
 
 ```java
-Blazon.of("0123456789").margin(1).render();
+Blazon.of("0123456789").render();
 ```
-```
- █▀█ ▄█ ▀▀█ ▀▀█ █▄█ █▀▀ █▄▄ ▀▀█ █▄█ █▄█
- █▄█  █ █▄▄ ▄██   █ ▄▄█ █▄█   █ █▄█ ▄▄█
-```
+![Digits](docs/img/digits.svg)
 
 `Font` is an interface (`int height()`, `Glyph glyph(char)`), so alternative faces
 (including a figlet loader) can be added without touching the renderer; the
