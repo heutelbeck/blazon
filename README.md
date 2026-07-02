@@ -78,7 +78,7 @@ import com.heutelbeck.blazon.Blazon;
 import com.heutelbeck.blazon.Palettes;
 
 var banner = Blazon.of("BLAZON")
-    .palette(Palettes.SAPL)
+    .palette(Palettes.EMBER)
     .margin(1)
     .line("Version: 1.0.0")
     .line("OS:      " + System.getProperty("os.name"))
@@ -144,14 +144,12 @@ Blazon.of("BLAZON").direction(Direction.DIAGONAL);   // top-left to bottom-right
 ### Palettes
 
 A `Palette` bundles a `Gradient` and an accent `Color`. `Palettes` ships
-ready-made themes, including the two this library was extracted from:
+ready-made themes:
 
 ![Palette showcase](docs/img/palettes.svg)
 
 | Palette | Notes |
 | --- | --- |
-| `SAPL` | teal, accent `62,160,167` — SAPL node / playground |
-| `PARATRON` | blue with a coral accent — Paratron gateway |
 | `EMBER` | amber to red |
 | `OCEAN` | sky to deep blue |
 | `FOREST` | mint to pine |
@@ -159,8 +157,8 @@ ready-made themes, including the two this library was extracted from:
 | `MONOCHROME` | light to dark grey |
 
 ```java
-Blazon.of("MY APP").palette(Palettes.PARATRON);
-Palettes.byName("sapl");   // Optional<Palette>, case-insensitive lookup
+Blazon.of("MY APP").palette(Palettes.OCEAN);
+Palettes.byName("forest");   // Optional<Palette>, case-insensitive lookup
 ```
 
 Apply a whole theme with `.palette(...)`, or set the pieces independently with
@@ -177,7 +175,7 @@ Blazon.of("TWO WORDS").render();                  // default word spacing (2)
 ![Two words with default spacing](docs/img/words.svg)
 
 ```java
-Blazon.of("TWO WORDS").wordSpacing(0).render();   // tight, like the original banners
+Blazon.of("TWO WORDS").wordSpacing(0).render();   // tight (no extra gap per space)
 ```
 ![Two words with tight spacing](docs/img/words-tight.svg)
 
@@ -185,14 +183,6 @@ Blazon.of("TWO WORDS").wordSpacing(0).render();   // tight, like the original ba
 Blazon.of("WIDE").letterSpacing(3).render();
 ```
 ![Wide letter spacing](docs/img/letter-spacing.svg)
-
-The original SAPL/Paratron banners used tight word spacing and a one-cell margin;
-this reproduces `banner-plain.txt` byte-for-byte:
-
-```java
-Blazon.of("SAPL NODE").margin(1).wordSpacing(0).render();
-```
-![SAPL node banner](docs/img/sapl-node.svg)
 
 ### Fonts
 
@@ -253,7 +243,7 @@ All optional, bound from `blazon.*`:
 
 ```properties
 blazon.text=My App        # explicit text, used verbatim (skips name derivation)
-blazon.palette=PARATRON   # any name from Palettes; default SAPL
+blazon.palette=OCEAN      # any name from Palettes
 blazon.color=truecolor    # AUTO (default), TRUECOLOR or NONE
 blazon.margin=1           # left indent; default 1
 blazon.metadata=true      # include the Version/OS lines; default true
@@ -295,7 +285,7 @@ in `line(...)` are resolved against the Spring `Environment` at print time:
 ```java
 public static void main(String[] args) {
     var blazon = Blazon.of("MY APP")
-        .palette(Palettes.PARATRON)
+        .palette(Palettes.EMBER)
         .line("Version: ${spring.application.version}")
         .line("OS:      ${os.name} ${os.version} ${os.arch}");
 

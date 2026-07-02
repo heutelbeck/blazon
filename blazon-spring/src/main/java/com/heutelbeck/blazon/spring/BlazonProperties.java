@@ -19,7 +19,7 @@ public class BlazonProperties {
 
     private boolean enabled  = true;
     private String  text;
-    private String  palette  = "SAPL";
+    private String  palette  = "EMBER";
     private String  color    = "AUTO";
     private int     margin   = 1;
     private boolean metadata = true;
@@ -49,7 +49,7 @@ public class BlazonProperties {
 
     /**
      * @return the {@link com.heutelbeck.blazon.Palettes} name to use; defaults to
-     * {@code SAPL}
+     * {@code EMBER}
      */
     public String getPalette() {
         return palette;

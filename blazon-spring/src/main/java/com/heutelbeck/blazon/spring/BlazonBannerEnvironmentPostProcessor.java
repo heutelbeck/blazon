@@ -65,7 +65,7 @@ public class BlazonBannerEnvironmentPostProcessor implements EnvironmentPostProc
         if (text == null || text.isBlank()) {
             return Optional.empty();
         }
-        final Palette palette = Palettes.byName(properties.getPalette()).orElse(Palettes.SAPL);
+        final Palette palette = Palettes.byName(properties.getPalette()).orElse(Palettes.EMBER);
         Blazon        blazon  = Blazon.of(text).palette(palette).margin(properties.getMargin());
         if (properties.isMetadata()) {
             final String versionLine = versionLine(environment);

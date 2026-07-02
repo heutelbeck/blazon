@@ -51,15 +51,15 @@ public final class BlazonSvgGenerator {
         final Path dir = Path.of(args.length > 0 ? args[0] : OUTPUT_DIR);
         Files.createDirectories(dir);
 
-        banner(dir.resolve("title.svg"), 24, "BLAZON", Palettes.SAPL);
-        banner(dir.resolve("quickstart.svg"), 15, "BLAZON", Palettes.SAPL, "Version: 1.0.0",
+        banner(dir.resolve("title.svg"), 24, "BLAZON", Palettes.SUNSET);
+        banner(dir.resolve("quickstart.svg"), 15, "BLAZON", Palettes.EMBER, "Version: 1.0.0",
                 "OS:      Linux 6.18 amd64");
-        banner(dir.resolve("spring.svg"), 15, "MY APP", Palettes.SAPL, "Version: 1.2.3 (a1b2c3d)",
+        banner(dir.resolve("spring.svg"), 15, "MY APP", Palettes.EMBER, "Version: 1.2.3 (a1b2c3d)",
                 "OS:      Linux 6.18.0 amd64");
 
-        final Palette[] palettes = { Palettes.SAPL, Palettes.PARATRON, Palettes.EMBER, Palettes.OCEAN, Palettes.FOREST,
-                Palettes.SUNSET, Palettes.MONOCHROME };
-        final String[]  names    = { "SAPL", "PARATRON", "EMBER", "OCEAN", "FOREST", "SUNSET", "MONOCHROME" };
+        final Palette[] palettes = { Palettes.EMBER, Palettes.OCEAN, Palettes.FOREST, Palettes.SUNSET,
+                Palettes.MONOCHROME };
+        final String[]  names    = { "EMBER", "OCEAN", "FOREST", "SUNSET", "MONOCHROME" };
         palettes(dir.resolve("palettes.svg"), 13, "BLAZON", palettes, names);
 
         // Neutral "diagram" banners illustrating spacing and glyph shapes.
@@ -68,7 +68,6 @@ public final class BlazonSvgGenerator {
         banner(dir.resolve("words.svg"), 13, Blazon.of("TWO WORDS"), mono);
         banner(dir.resolve("words-tight.svg"), 13, Blazon.of("TWO WORDS").wordSpacing(0), mono);
         banner(dir.resolve("letter-spacing.svg"), 13, Blazon.of("WIDE").letterSpacing(3), mono);
-        banner(dir.resolve("sapl-node.svg"), 13, Blazon.of("SAPL NODE").wordSpacing(0), mono);
         banner(dir.resolve("digits.svg"), 13, Blazon.of("0123456789"), mono);
     }
 

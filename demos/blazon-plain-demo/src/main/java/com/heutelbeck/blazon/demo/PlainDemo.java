@@ -35,8 +35,6 @@ public final class PlainDemo {
      * @param args ignored
      */
     public static void main(String[] args) {
-        palette("SAPL (node / playground)", Palettes.SAPL, Direction.HORIZONTAL, 1);
-        palette("PARATRON (gateway)", Palettes.PARATRON, Direction.HORIZONTAL, 1);
         palette("EMBER", Palettes.EMBER, Direction.HORIZONTAL, 1);
         palette("OCEAN (diagonal)", Palettes.OCEAN, Direction.DIAGONAL, 1);
         palette("FOREST (vertical)", Palettes.FOREST, Direction.VERTICAL, 1);
