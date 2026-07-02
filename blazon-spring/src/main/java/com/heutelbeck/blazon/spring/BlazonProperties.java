@@ -25,71 +25,118 @@ public class BlazonProperties {
     private boolean metadata = true;
 
     /**
-     * @return whether Blazon replaces the startup banner; defaults to {@code true}
+     * Creates the properties populated with their defaults.
+     */
+    public BlazonProperties() {
+    }
+
+    /**
+     * Whether Blazon replaces the startup banner.
+     *
+     * @return whether Blazon is enabled; defaults to {@code true}
      */
     public boolean isEnabled() {
         return enabled;
     }
 
+    /**
+     * Sets whether Blazon replaces the startup banner.
+     *
+     * @param enabled the new value
+     */
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
     }
 
     /**
-     * @return the explicit banner text, or {@code null} to derive it from the
-     * application name
+     * The explicit banner text.
+     *
+     * @return the banner text, or {@code null} to derive it from the application
+     * name
      */
     public String getText() {
         return text;
     }
 
+    /**
+     * Sets the explicit banner text.
+     *
+     * @param text the text, or {@code null} to derive it from the application name
+     */
     public void setText(String text) {
         this.text = text;
     }
 
     /**
-     * @return the {@link com.heutelbeck.blazon.Palettes} name to use; defaults to
+     * The palette to paint the banner with.
+     *
+     * @return the {@link com.heutelbeck.blazon.Palettes} name; defaults to
      * {@code EMBER}
      */
     public String getPalette() {
         return palette;
     }
 
+    /**
+     * Sets the palette to paint the banner with.
+     *
+     * @param palette a {@link com.heutelbeck.blazon.Palettes} name
+     */
     public void setPalette(String palette) {
         this.palette = palette;
     }
 
     /**
-     * @return the colour mode: {@code AUTO}, {@code TRUECOLOR} or {@code NONE};
-     * defaults to {@code AUTO}
+     * The colour mode.
+     *
+     * @return {@code AUTO}, {@code TRUECOLOR} or {@code NONE}; defaults to
+     * {@code AUTO}
      */
     public String getColor() {
         return color;
     }
 
+    /**
+     * Sets the colour mode.
+     *
+     * @param color {@code AUTO}, {@code TRUECOLOR} or {@code NONE}
+     */
     public void setColor(String color) {
         this.color = color;
     }
 
     /**
-     * @return the left margin in cells; defaults to {@code 1}
+     * The left margin prepended to every line.
+     *
+     * @return the margin in cells; defaults to {@code 1}
      */
     public int getMargin() {
         return margin;
     }
 
+    /**
+     * Sets the left margin prepended to every line.
+     *
+     * @param margin the margin in cells
+     */
     public void setMargin(int margin) {
         this.margin = margin;
     }
 
     /**
-     * @return whether to append version and OS metadata lines; defaults to
-     * {@code true}
+     * Whether the version and OS metadata lines are appended.
+     *
+     * @return whether metadata lines are included; defaults to {@code true}
      */
     public boolean isMetadata() {
         return metadata;
     }
 
+    /**
+     * Sets whether the version and OS metadata lines are appended.
+     *
+     * @param metadata the new value
+     */
     public void setMetadata(boolean metadata) {
         this.metadata = metadata;
     }

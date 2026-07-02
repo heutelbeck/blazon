@@ -43,6 +43,13 @@ public class BlazonBannerEnvironmentPostProcessor implements EnvironmentPostProc
     private static final String GIT_VERSION_PROPERTY         = "git.build.version";
     private static final String OS_LINE                      = "OS:      ${os.name} ${os.version} ${os.arch}";
 
+    /**
+     * Creates the post-processor. Instantiated by Spring Boot from
+     * {@code META-INF/spring.factories}.
+     */
+    public BlazonBannerEnvironmentPostProcessor() {
+    }
+
     @Override
     public int getOrder() {
         return Ordered.LOWEST_PRECEDENCE;
